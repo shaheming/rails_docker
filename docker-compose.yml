@@ -8,7 +8,7 @@ volumes:
 
 services:
   mysql:
-    image: mysql:5.6.34
+    image: staff0rd/mysql-minimal
     ports:
       - 3307:3306
     volumes:
