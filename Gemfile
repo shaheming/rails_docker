@@ -73,3 +73,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 #Config helps you easily manage environment specific settings in an easy and usable manner. https://github.com/railsconfig/config
 gem 'config'
+
+gem 'mechanize'
