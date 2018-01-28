@@ -2,11 +2,11 @@ class Admin::InvestmentController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    invest_websites = current_user.websites
+    invest_websites = current_user.investments
     @investments = invest_websites.map do |invest|
       {
           name: invest.name,
-          url: invest.url,
+          url: invest.website.url,
           current_price: invest.current_price,
 
       }
