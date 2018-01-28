@@ -3,7 +3,7 @@ class CreateWebsites < ActiveRecord::Migration[5.1]
     create_table :websites do |t|
       t.text :url
       t.text :parse_directive
-      t.references :users
+      t.references :user
       t.timestamps
     end
   end

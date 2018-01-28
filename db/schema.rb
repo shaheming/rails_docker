@@ -51,12 +51,12 @@ ActiveRecord::Schema.define(version: 20180128055810) do
   create_table "websites", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.text "url"
     t.text "parse_directive"
-    t.bigint "users_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "description"
     t.integer "investment_id"
-    t.index ["users_id"], name: "index_websites_on_users_id"
+    t.index ["user_id"], name: "index_websites_on_users_id"
   end
 
 end

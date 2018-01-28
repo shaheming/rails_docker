@@ -7,7 +7,8 @@ class Admin::InvestmentController < ApplicationController
       {
           name: invest.name,
           url: invest.url,
-          price: get_fund_price(invest.url, invest.parse_directive)
+          current_price: invest.current_price,
+
       }
     end
   end
@@ -16,8 +17,12 @@ class Admin::InvestmentController < ApplicationController
     @invest = current_user.websites.where(id: params[:id]).take
   end
 
+  def new
+
+  end
+
   def create
-    current_user.websites.create!(website_params)
+    current_user.investment.create!(website_params)
   end
 
   private
@@ -27,16 +32,5 @@ class Admin::InvestmentController < ApplicationController
   end
 
 
-  def get_fund_price(url, parse_directive)
-    begin
-      agent = Mechanize.new
-      page = agent.get url
-      directive = <<-EOS
-        page.#{parse_directive}
-      EOS
-      eval directive
-    rescue Exception => ex
-      [ex.message, ex.backtrace]
-    end
-  end
+
 end

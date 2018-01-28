@@ -1,0 +1,28 @@
+<div class="col-md-12">
+  <h2 class="text-center"> Investments </h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th> # </th>
+        <th> Title </th>
+        <th> Description </th>
+        <th> Option </th>
+      </tr>
+
+      <div class="pull-right">
+        <button class="btn btn-default"><%= link_to("New",new_meetup_path) %></button>
+      </div>
+    </thead>
+
+    <tbody>
+      <% @investments.each do |investment| %>
+        <tr>
+          <td> # </td>
+        <td> <%= link_to(investment[:name],investment[:url]) %> </td>
+        <td> <%= investment[:current_price] %> </td>
+        <td> <%= %> </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
