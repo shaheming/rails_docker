@@ -43,8 +43,9 @@ $ docker-compose --version #测试Docker Compose是否工作
 ```shell
 md my_website
 cd my_website
+md mysql_data
 git clone
-ln -s 
+ln -s  #path_to/odcker-compose.yml odcker-compose.yml
 #production
 export SERVER_IP=$(curl -s ip.cn | grep -oE "[0-9.]+")
 #deveopent
