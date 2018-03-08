@@ -2,9 +2,8 @@ class WelcomeController < ApplicationController
   before_action :check_1, :check_2, :only => :test
 
   def index
-    @text = Time.now.to_s + "SHAME"
 
-    if current_user
+
       a = Mechanize.new
       a.get('https://www.worldcryptocap.com') do |page|
         # Click the login link
@@ -18,7 +17,7 @@ class WelcomeController < ApplicationController
         wcg_price = my_page.search("#shares")[-1].children[-2].children[3].children[1].children.text
         @text = "WCG: $#{wcg_price.strip}"
       end
-    end
+
     logger.info { "=====#{Time.now.to_s}=======" }
   end
 
