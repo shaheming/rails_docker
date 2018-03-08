@@ -2,21 +2,19 @@ class WelcomeController < ApplicationController
   before_action :check_1, :check_2, :only => :test
 
   def index
+    a = Mechanize.new
+    a.get('https://www.worldcryptocap.com') do |page|
+      # Click the login link
 
+      # Submit the login form
+      my_page = page.form_with(:action => '/') do |f|
+        f.fields[1].value = "sander123"
+        f.fields[2].value = "worldcryptocap_sha_1234"
+      end.click_button
 
-      a = Mechanize.new
-      a.get('https://www.worldcryptocap.com') do |page|
-        # Click the login link
-
-        # Submit the login form
-        my_page = page.form_with(:action => '/') do |f|
-          f.fields[1].value = "sander123"
-          f.fields[2].value = "worldcryptocap_sha_1234"
-        end.click_button
-
-        wcg_price = my_page.search("#shares")[-1].children[-2].children[3].children[1].children.text
-        @text = "WCG: $#{wcg_price.strip}"
-      end
+      wcg_price = my_page.search("#shares")[-1].children[-2].children[3].children[1].children.text
+      @text = "WCG: $#{wcg_price.strip}"
+    end
 
     logger.info { "=====#{Time.now.to_s}=======" }
   end
